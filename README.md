@@ -23,6 +23,6 @@ let message: Option<&str> = string.ref_map(|s| s.strim());
 
 ----
 
-Copyright (C) 2019 Ammon Smith
+Copyright (C) 2020 Ammon Smith
 
 Available under the MIT License.
