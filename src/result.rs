@@ -14,13 +14,11 @@
 pub trait ResultRefMap<'t, 'e, T: 't, E: 'e> {
     fn ref_map<U, F>(&self, f: F) -> Result<U, &E>
     where
-        F: FnOnce(&T) -> U,
-        U: 't;
+        F: FnOnce(&T) -> U;
 
     fn ref_map_err<D, F>(&self, f: F) -> Result<&T, D>
     where
-        F: FnOnce(&E) -> D,
-        D: 'e;
+        F: FnOnce(&E) -> D;
 }
 
 impl<'t, 'e, T: 't, E: 'e> ResultRefMap<'t, 'e, T, E> for Result<T, E> {
@@ -28,7 +26,6 @@ impl<'t, 'e, T: 't, E: 'e> ResultRefMap<'t, 'e, T, E> for Result<T, E> {
     fn ref_map<U, F>(&self, f: F) -> Result<U, &E>
     where
         F: FnOnce(&T) -> U,
-        U: 't,
     {
         match *self {
             Ok(ref x) => Ok(f(x)),
@@ -40,7 +37,6 @@ impl<'t, 'e, T: 't, E: 'e> ResultRefMap<'t, 'e, T, E> for Result<T, E> {
     fn ref_map_err<D, F>(&self, f: F) -> Result<&T, D>
     where
         F: FnOnce(&E) -> D,
-        D: 'e,
     {
         match *self {
             Ok(ref x) => Ok(x),

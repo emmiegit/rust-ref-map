@@ -18,6 +18,8 @@
 mod option;
 mod result;
 
+#[cfg(test)]
+mod test;
 
 pub use self::option::OptionRefMap;
 pub use self::result::ResultRefMap;
