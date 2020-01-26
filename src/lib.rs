@@ -17,3 +17,11 @@
 
 mod option;
 mod result;
+
+pub mod prelude {
+    pub use crate::option::OptionRefMap;
+    pub use crate::result::ResultRefMap;
+}
+
+pub use self::option::OptionRefMap;
+pub use self::result::ResultRefMap;

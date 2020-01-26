@@ -11,4 +11,26 @@
  *
  */
 
-// TODO
+pub trait ResultRefMap<T, E> {
+    fn ref_map<U, F: FnOnce(&T) -> U>(&self, f: F) -> Result<U, &E>;
+
+    fn ref_map_err<D, F: FnOnce(&E) -> D>(&self, f: F) -> Result<&T, D>;
+}
+
+impl<T, E> ResultRefMap<T, E> for Result<T, E> {
+    #[inline]
+    fn ref_map<U, F: FnOnce(&T) -> U>(&self, f: F) -> Result<U, &E> {
+        match *self {
+            Ok(ref x) => Ok(f(x)),
+            Err(ref x) => Err(x),
+        }
+    }
+
+    #[inline]
+    fn ref_map_err<D, F: FnOnce(&E) -> D>(&self, f: F) -> Result<&T, D> {
+        match *self {
+            Ok(ref x) => Ok(x),
+            Err(ref x) => Err(f(x)),
+        }
+    }
+}

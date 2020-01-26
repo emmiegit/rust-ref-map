@@ -11,4 +11,16 @@
  *
  */
 
-// TODO
+pub trait OptionRefMap<T> {
+    fn ref_map<U, F: FnOnce(&T) -> U>(&self, f: F) -> Option<U>;
+}
+
+impl<T> OptionRefMap<T> for Option<T> {
+    #[inline]
+    fn ref_map<U, F: FnOnce(&T) -> U>(&self, f: F) -> Option<U> {
+        match *self {
+            Some(ref x) => Some(f(x)),
+            None => None,
+        }
+    }
+}
