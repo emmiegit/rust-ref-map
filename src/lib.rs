@@ -14,9 +14,9 @@
 #![deny(missing_debug_implementations)]
 #![warn(missing_docs)]
 
-//! Convenience methods when dealing with references of [`Option`]s and [`Results`].
+//! Convenience methods when dealing with references of [`Option`]s and [`Result`]s.
 //!
-//! It introduces two traits, `OptionRefMap` and `ResultRefMap`, which add methods
+//! It introduces two traits, [`OptionRefMap`] and [`ResultRefMap`], which add methods
 //! to their respective standard library enums to avoid needing to add `.as_ref()`
 //! before any `.map()` methods on their value.
 //!
@@ -53,6 +53,8 @@
 //!
 //! [`Option`]: https://doc.rust-lang.org/std/option/enum.Option.html
 //! [`Result`]: https://doc.rust-lang.org/std/result/enum.Result.html
+//! [`OptionRefMap`]: ./trait.OptionRefMap.html
+//! [`ResultRefMap`]: ./trait.ResultRefMap.html
 
 mod option;
 mod result;
