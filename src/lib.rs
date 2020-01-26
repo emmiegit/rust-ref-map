@@ -60,5 +60,8 @@ mod result;
 #[cfg(test)]
 mod test;
 
+/// Extension trait for `Option`.
 pub use self::option::OptionRefMap;
+
+/// Extension trait for `Result`.
 pub use self::result::ResultRefMap;
