@@ -11,8 +11,7 @@
  *
  */
 
-#![deny(missing_debug_implementations)]
-#![warn(missing_docs)]
+#![deny(missing_debug_implementations, missing_docs)]
 
 //! Convenience methods when dealing with references of [`Option`]s and [`Result`]s.
 //!
