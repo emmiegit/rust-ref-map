@@ -11,15 +11,25 @@
  *
  */
 
-pub trait ResultRefMap<T, E> {
-    fn ref_map<U, F: FnOnce(&T) -> U>(&self, f: F) -> Result<U, &E>;
+pub trait ResultRefMap<'t, 'e, T: 't, E: 'e> {
+    fn ref_map<U, F>(&self, f: F) -> Result<U, &'e E>
+    where
+        F: FnOnce(&'t T) -> U,
+        U: 't;
 
-    fn ref_map_err<D, F: FnOnce(&E) -> D>(&self, f: F) -> Result<&T, D>;
+    fn ref_map_err<D, F>(&self, f: F) -> Result<&'t T, D>
+    where
+        F: FnOnce(&'e E) -> D,
+        D: 'e;
 }
 
-impl<T, E> ResultRefMap<T, E> for Result<T, E> {
+impl<'t, 'e, T: 't, E: 'e> ResultRefMap<'t, 'e, T, E> for Result<T, E> {
     #[inline]
-    fn ref_map<U, F: FnOnce(&T) -> U>(&self, f: F) -> Result<U, &E> {
+    fn ref_map<U, F>(&self, f: F) -> Result<U, &'e E>
+    where
+        F: FnOnce(&'t T) -> U,
+        U: 't,
+    {
         match *self {
             Ok(ref x) => Ok(f(x)),
             Err(ref x) => Err(x),
@@ -27,7 +37,11 @@ impl<T, E> ResultRefMap<T, E> for Result<T, E> {
     }
 
     #[inline]
-    fn ref_map_err<D, F: FnOnce(&E) -> D>(&self, f: F) -> Result<&T, D> {
+    fn ref_map_err<D, F>(&self, f: F) -> Result<&'t T, D>
+    where
+        F: FnOnce(&'e E) -> D,
+        D: 'e,
+    {
         match *self {
             Ok(ref x) => Ok(x),
             Err(ref x) => Err(f(x)),
