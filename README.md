@@ -1,5 +1,7 @@
 ## ref-map
 
+[![Build Status](https://travis-ci.org/ammongit/rust-ref-map.svg?branch=master)](https://travis-ci.org/ammongit/rust-ref-map)
+
 Rust crate for a convenience trait on `Option<T>` and `Result<T, E>`.
 
 Has no dependencies, and should work on any Rust release channel.
