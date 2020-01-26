@@ -1,0 +1,14 @@
+[package]
+name = "ref-map"
+description = "Helper trait for Option and Result to map references"
+repository = "https://github.com/ammongit/rust-as-map"
+readme = "README.md"
+license = "MIT"
+keywords = ["option", "result", "as_ref", "map", "reference"]
+categories = ["rust-patterns"]
+
+version = "0.0.1"
+authors = ["Ammon Smith <ammon.i.smith@gmail.com>"]
+edition = "2018"
+
+[dependencies]
