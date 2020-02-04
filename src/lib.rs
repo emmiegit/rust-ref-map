@@ -12,6 +12,7 @@
  */
 
 #![deny(missing_debug_implementations, missing_docs)]
+#![forbid(unsafe_code)]
 
 //! Convenience methods when dealing with references of [`Option`]s and [`Result`]s.
 //!
