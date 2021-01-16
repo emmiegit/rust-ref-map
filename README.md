@@ -26,6 +26,6 @@ let message: Option<&str> = string.ref_map(|s| s.trim());
 
 ----
 
-Copyright (C) 2020 Ammon Smith
+Copyright (C) 2020-2021 Ammon Smith
 
 Available under the MIT License.
