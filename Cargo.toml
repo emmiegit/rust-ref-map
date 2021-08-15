@@ -1,7 +1,7 @@
 [package]
 name = "ref-map"
 description = "Helper trait for Option and Result to map references"
-repository = "https://github.com/ammongit/rust-as-map"
+repository = "https://github.com/ammongit/rust-ref-map"
 readme = "README.md"
 license = "MIT"
 keywords = ["option", "result", "as_ref", "map", "reference"]
