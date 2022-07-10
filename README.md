@@ -1,6 +1,6 @@
 ## ref-map
 
-[![Build Status](https://travis-ci.org/ammongit/rust-ref-map.svg?branch=master)](https://travis-ci.org/ammongit/rust-ref-map)
+[![Build Status](https://travis-ci.org/emmiegit/rust-ref-map.svg?branch=master)](https://travis-ci.org/emmiegit/rust-ref-map)
 
 Rust crate for convenience traits on `Option<T>` and `Result<T, E>`.
 
